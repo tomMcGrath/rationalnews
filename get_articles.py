@@ -4,7 +4,7 @@ import pickle
 def get_results(page_limit_per_request=50, results_per_page=20):
     """Queries NewsAPI for articles up to page_limit_per_request (max 50) and
     returns a dictionary mapping URL: content."""
-    
+
     dict_url_desc = {}  # stores articles indexed by URL
     # Iterate over pages - rate limited
     for i in range(page_limit_per_request):
@@ -35,10 +35,3 @@ def get_results(page_limit_per_request=50, results_per_page=20):
             break
 
     return dict_url_desc
-
-"""
-# Export results as a pickled dictionary
-dict_url_desc_out = open('dict_url_desc_out.pkl', 'wb')
-pickle.dump(dict_url_desc, dict_url_desc_out)
-dict_url_desc_out.close()
-"""
