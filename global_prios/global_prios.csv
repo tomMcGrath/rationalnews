@@ -1,60 +1,7 @@
 Topic, Yearly QALY/DALY, Keywords,Reference
-Extreme poverty, 1e9, (poverty AND (international OR africa OR india OR (lower AND middle AND income)) ),https://80000hours.org/articles/problem-framework/
-Cure Cancer,1e8,((cancer OR tumor OR tumour) AND cure ),https://80000hours.org/articles/problem-framework/
-US land use,1e6,(US AND land AND use),https://80000hours.org/articles/problem-framework/
+Extreme poverty, 1e9, poverty AND (global OR international OR africa OR india OR (lower AND middle AND income)) ,https://80000hours.org/articles/problem-framework/
+Cure Cancer,1e8,(cancer OR tumor OR tumour) AND cure ,https://80000hours.org/articles/problem-framework/
+US land use,1e6,US AND land use,https://80000hours.org/articles/problem-framework/
 US teacher red tape,1e5,(US AND bureaucracy AND teachers),https://80000hours.org/articles/problem-framework/
-HIV_AIDS_STI|HIV_AIDS,54400000000,drug-susceptible OR tuberculosis OR infection OR drug-resist*,PMID_30415748
-HIV_AIDS_STI|STI,11500000000,syphilis OR chlamyd* OR gonococc* OR trichomon* OR herpes OR genital herpes OR sexually-transm* OR STI OR STD OR HIV/AIDS,PMID_30415748
-RESP_TB|TB,160000000000,BCG OR latent tuberculosis OR drug-susceptible tuberculosis,PMID_30415748
-RESP_TB|lower_respiratoy,106000000000,RTI OR respiratory tract infect* OR bronchitis OR pneumonia OR bronchitis OR lung abscess,PMID_30415748
-RESP_TB|upper_respiratory,6340000000,RTI OR respiratory tract infect* OR common cold OR sinusitis OR pharyngitis OR epiglottitis OR tracheobronchitis,PMID_30415748
-ENTERIC|diarrhoeal,81000000000,diarrhoeal disease OR dehydrat*,PMID_30415748
-ENTERIC|typhoid ,9800000000,typhoid fever OR paratyphoid fever,PMID_30415748
-ENTERIC|salmonella,4260000000,salmonellosis,PMID_30415748
-ENTERIC|salmonella,4260000000,salmonellosis,PMID_30415748
-TROPICAL|neglected_tropical,17300000000,chagas OR leishmaniasis OR yellow fever OR schistosomiasis OR cysticercosis OR dengue OR lymphatic filariasis OR rabies OR intestinal nematode OR food-borne trematodiases OR leprosy,PMID_30415748
-OTHER_INFECT|meningitis,20400000000,pneumococcal OR H influenzae OR type B OR infectio*,PMID_30415748
-OTHER_INFECT|encephalitis,5110000000,japan* OR infectio*,PMID_30415748
-OTHER_INFECT|whooping_cough,7980000000,infectio*,PMID_30415748
-OTHER_INFECT|tetanus,2450000000,BCG OR vaccin* OR immun* OR Calmette OR infectio*,PMID_30415748
-OTHER_INFECT|measles,8160000000,MMR OR MCV* OR infectio*,PMID_30415748
-OTHER_INFECT|hepatitis,5990000000,hepatitis A OR hepatitis B OR hepatitis C OR hepatitis E OR hep A OR hep B OR hep C OR hep E OR infectio*,PMID_30415748
-MATERNAL_NEONATAL|maternal,11800000000,haemorrhage OR sepsis OR hypertensive,PMID_30415748
-MATERNAL_NEONATAL|neonatal_preterm,70200000000,premature OR preterm,PMID_30415748
-MATERNAL_NEONATAL|neonatal_encephalopathy,56500000000,neonatal encephalopathy OR birth asphyxia OR birth trauma,PMID_30415748
-MATERNAL_NEONATAL|neonatal_sepsis,22000000000,neonatal sepsis OR neonatal infection,PMID_30415748
-MATERNAL_NEONATAL|neonatal_haemolytic,5190000000,haemolytic disease OR haemolytic jaundice OR jaundice OR haemolytic,PMID_30415748
-NON_COMMUNICABLE|cancer,234000000000,stomach OR colon OR liver OR skin OR pancrea* OR breast OR cervical OR ovarian OR prostate OR lung OR trachea* OR brain OR leukaemia OR leukemia,PMID_30415748
-CARDIOVASCULAR|heart_disease,179390000000,coronary OR artery OR heart attack OR heart failure OR rheumatic OR ischaem* OR ischem* OR heart OR cholesterol OR smok* OR blood OR pressure,PMID_30415748
-CARDIOVASCULAR|stroke,132000000000,CVA OR cholesterol OR smok* OR blood OR pressure OR brain OR ischaem* OR ischem* OR cerebral OR haemorrhage OR hemorrhage OR subarachnoid,PMID_30415748
-CHRONIC_RESPIRATORY|copd,81600000000,chronic obstructive pulmonary disease OR COPD OR emphysema OR bronchitis OR smok*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
-CHRONIC_RESPIRATORY|asthma,22800000000,breath*,PMID_30415748
+Mental health, 1.7e8, (schizophrenia OR depression OR anxiety), global burden of disease study
+Smoking, 1e8, (smoking OR cigarette) AND (health OR death OR cancer OR stroke OR heart attack), https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(17)30819-X/fulltext 
