@@ -1,4 +1,4 @@
-def parse_keywords(x):
+def parse_keywords_old(x):
     """Parses given string to generate a list of keywords. For example:
     
     >>> parse_keywords('brain OR breast AND tumour OR tumor OR cancer | heart OR lung OR brain AND disease OR disorder OR issue')
@@ -28,5 +28,14 @@ def parse_keywords(x):
             t = tok.split('OR')
             t = [s.strip() for s in t]
             toks_curr.append(t)
-        toks_all.append([' '.join(i).strip().lower() for i in product(*toks_curr, repeat=1)])        
+        toks_all.append([' '.join(i).strip().lower() for i in product(*toks_curr, repeat=1)])
     return toks_all
+
+
+def parse_keywords(x):
+    import pyparsing
+    content = pyparsing.Word(pyparsing.alphanums)
+    parser = pyparsing.nestedExpr( '(', ')', content=content)
+    token_list = parser.parseString(x).asList()                    
+    return token_list  
+
