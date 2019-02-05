@@ -65,13 +65,11 @@ class ParserAPI(object):
         p = ParsedArticle.from_dict(r.json(), parser=self)
         return p
 
-mercury = ParserAPI(api_key='uNQyRItUfR78vKZsuRKi4MkAVSCCxHwGbOgPGGq3')
-
-
 def get_results(page_limit_per_request=50, results_per_page=20):
     """Queries NewsAPI for articles up to page_limit_per_request (max 50) and
     returns a dictionary mapping URL: content."""
     
+    mercury = ParserAPI(api_key='uNQyRItUfR78vKZsuRKi4MkAVSCCxHwGbOgPGGq3')
     dict_url_desc = {}  # stores articles indexed by URL
     # Iterate over pages - rate limited
     for i in range(page_limit_per_request):
