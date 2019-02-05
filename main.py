@@ -3,6 +3,7 @@ import keyword_parser
 import calc_qualys
 import score_articles
 import pickle
+import get_whole_article
 
 ## Get articles from NewsAPI
 """
@@ -10,11 +11,11 @@ page_limit_per_request = 1
 results_per_page = 20
 article_dict = get_articles.get_results(page_limit_per_request,
                                         results_per_page)
-"""
+
 pickled_file = open('dict_url_desc_out.pkl', 'rb')
 article_dict = pickle.load(pickled_file)
-print(article_dict)
-
+"""
+article_dict = get_whole_article.get_results()
 
 ## Calculate aggregate QALY scores for each article
 qaly_path = 'global_prios/global_prios_simple.csv'
