@@ -1,11 +1,5 @@
 import pandas as pd
 
-# create some test data
-# columns are topics and rows are URLs of articles
-'''testdata = pd.DataFrame([[1,1,0,0],[0,1,0,0],[0,0,1,0]],
-                    columns=['Extreme poverty','Cure Cancer','US land use',
-                             'US teacher red tape'],
-                    index=['a','b','c'])'''
 
 def calculateURLQUALYs(topicsofURLS, QUALYdatafile):
     """This function takes in a dataframe and the name of a CSV file and outputs
