@@ -1,41 +1,42 @@
-def parse_keywords_old(x):
-    """Parses given string to generate a list of keywords. For example:
-    
-    >>> parse_keywords('brain OR breast AND tumour OR tumor OR cancer | heart OR lung OR brain AND disease OR disorder OR issue')
-    [['brain tumour',
-      'brain tumor',
-      'brain cancer',
-      'breast tumour',
-      'breast tumor',
-      'breast cancer'],
-     ['heart disease',
-      'heart disorder',
-      'heart issue',
-      'lung disease',
-      'lung disorder',
-      'lung issue',
-      'brain disease',
-      'brain disorder',
-      'brain issue']]
-    """
-    from itertools import product
-    tokens = x.split('|')
-    toks_all = list()
-    for token in tokens:
-        toks = token.split('AND')
-        toks_curr = list()
-        for tok in toks:
-            t = tok.split('OR')
-            t = [s.strip() for s in t]
-            toks_curr.append(t)
-        toks_all.append([' '.join(i).strip().lower() for i in product(*toks_curr, repeat=1)])
-    return toks_all
-
-
 def parse_keywords(x):
+    """Parses a logic statement and outputs its DNF form (ORs of ANDs).
+    
+    The string must respect nested bracketting, using '(',')', use OR and AND to delimit logic.
+    If arguments containing space, enclose the argument in double quotes.
+    
+    >>> keys = 'poverty AND (global OR "international challenge" OR (africa AND (subafrica OR subaf)) OR india OR (lower AND (middle OR mid OR (m AND M)) AND income))'
+    [['poverty', 'global'],
+     ['poverty', 'international challenge'],
+     ['poverty', 'africa', 'subafrica'],
+     ['poverty', 'africa', 'subaf'],
+     ['poverty', 'india'],
+     ['poverty', 'lower', 'middle', 'income'],
+     ['poverty', 'lower', 'mid', 'income'],
+     ['poverty', 'lower', 'm', 'M', 'income']]
+     
+    Returns a list of lists in DNF form.
+    """
     import pyparsing
+    from itertools import product, chain
     content = pyparsing.Word(pyparsing.alphanums)
     parser = pyparsing.nestedExpr( '(', ')', content=content)
-    token_list = parser.parseString(x).asList()                    
-    return token_list  
-
+    x = '('+x+')'
+    token_list = parser.parseString(x).asList()
+    while len(token_list)==1: token_list = token_list[0]
+    def unroll(y):
+        if isinstance(y, str): return [y.strip('"')]
+        else:
+            if 'AND' in y:
+                y = list(filter(lambda a: a!='AND', y))
+                return list(product(*[unroll(a) for a in y]))
+            elif 'OR' in y:
+                y = list(filter(lambda a: a!='OR', y))
+                return list(chain.from_iterable([unroll(a) for a in y]))
+    def flatten(y):
+        if isinstance(y, str): return [y]
+        else:
+            out = list()
+            for a in y: out += flatten(a)
+        return out
+    token_list = [flatten(x) for x in unroll(token_list)]
+    return token_list
