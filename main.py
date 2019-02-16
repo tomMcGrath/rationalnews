@@ -10,6 +10,15 @@ import datetime
 import time, threading
 from pdb import set_trace
 
+'''
+To run this script:
+
+$ tmux
+$ python main.py
+
+Then detach the session by typing ctrl+b d
+'''
+
 
 # Class for repetitive actions
 class RepeatEvery(threading.Thread):
