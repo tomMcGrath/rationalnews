@@ -24,6 +24,7 @@ rm Anaconda3-2018.12-Linux-x86_64.sh
 git clone https://github.com/tomMcGrath/rationalnews.git
 sudo apt-get install ruby-dev
 easy_install tweepy
+sudo apt-get install tmux
 ```
 
 6. Go to https://developer.twitter.com/en/apply-for-access and make a developer account. For the Callback URL, put anything e.g. http://wwwf.imperial.ac.uk/~nsjones/jones.htm. Generate Consumer API keys and Access token & access token secret.
