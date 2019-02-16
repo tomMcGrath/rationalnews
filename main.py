@@ -115,7 +115,7 @@ error_log_pointer = open(error_log_filename,'w')
 error_log_pointer.write('Type,Time\n')
 error_log_pointer.close()
 
-periodicity_s = 10
+periodicity_s = 3600
 max_time = 7*24*3600
 
 thread = RepeatEvery(periodicity_s, tweet_news, tweepyapi, qaly_path, error_log_filename, error_log_pointer)
