@@ -1,3 +1,5 @@
+from keyword_parser import parse_keywords
+
 def get_qaly_data(filepath):
     qaly_scorer = {}
     with open(filepath, 'r') as infile:
@@ -6,10 +8,12 @@ def get_qaly_data(filepath):
                 continue
 
             topic, score, keywords, ref = line.split(',')
-            keywords = keywords.split(' AND ')
-            keywords = tuple([i.strip() for i in keywords]) # remove whitespace
+            #keywords = keywords.split(' AND ')
+            #keywords = tuple([i.strip() for i in keywords]) # remove whitespace
 
-            qaly_scorer[keywords] = (float(score), topic)
+            keywords_set = parse_keywords(keywords)
+            for keywords in keywords_set:
+            	qaly_scorer[tuple(keywords)] = (float(score), topic)
 
     return qaly_scorer
 
