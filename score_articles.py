@@ -1,5 +1,5 @@
 from keyword_parser import parse_keywords
-
+from pdb import set_trace
 def get_qaly_data(filepath):
     qaly_scorer = {}
     with open(filepath, 'r') as infile:
@@ -10,7 +10,7 @@ def get_qaly_data(filepath):
             topic, score, keywords, ref = line.split(',')
             #keywords = keywords.split(' AND ')
             #keywords = tuple([i.strip() for i in keywords]) # remove whitespace
-
+            #set_trace()
             keywords_set = parse_keywords(keywords)
             for keywords in keywords_set:
             	qaly_scorer[tuple(keywords)] = (float(score), topic)
