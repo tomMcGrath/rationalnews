@@ -1,25 +1,51 @@
-import get_articles
-import keyword_parser
-import calc_qualys
-import score_articles
-import pickle
-import get_whole_article
+import tweepy
+import tweeting
 
-## Get articles from NewsAPI
-"""
-page_limit_per_request = 1
-results_per_page = 20
-article_dict = get_articles.get_results(page_limit_per_request,
-                                        results_per_page)
+'''
+To run this script:
 
-pickled_file = open('dict_url_desc_out.pkl', 'rb')
-article_dict = pickle.load(pickled_file)
-"""
-article_dict = get_whole_article.get_results()
+$ tmux
+$ python main.py
 
-## Calculate aggregate QALY scores for each article
-qaly_path = 'global_prios/global_prios_simple.csv'
-qaly_scorer = score_articles.get_qaly_data(qaly_path)
-article_dict = score_articles.score_all(article_dict, qaly_scorer)
-for i in sorted(article_dict, key=lambda x: article_dict[x][0]):
-    print(i, article_dict[i])
+Then detach the session by typing ctrl+b d
+'''
+
+credentials_dir = '../'
+credentials_filename = 'twitter_API_keys.txt' # this must be placed in the directory above the repo
+
+# Parse twitter credentials from the text file, see https://developer.twitter.com/en/apps
+fp = open(credentials_dir+credentials_filename,'r')
+creds = fp.read().splitlines()
+for c in creds:
+    if 'API_key=' in c:
+        consumer_token=c.split('=')[1]
+    if 'API_secret_key=' in c:
+        consumer_secret=c.split('=')[1]
+    if 'Access_token=' in c:
+        access_token=c.split('=')[1]
+    if 'Access_token_secret=' in c:
+        access_token_secret=c.split('=')[1]
+
+# Set twitter credentials
+auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+tweepyapi = tweepy.API(auth)
+
+qaly_path = 'global_prios/global_prios.csv'
+
+# Set up error log
+error_log_filename = 'error_log.txt'
+error_log_pointer = open(error_log_filename,'w')
+error_log_pointer.write('Type,Time\n')
+error_log_pointer.close()
+
+periodicity_s = 3600
+max_time = 7*24*3600
+
+thread = tweeting.RepeatEvery(periodicity_s, tweeting.tweet_news, tweepyapi, qaly_path, error_log_filename, error_log_pointer)
+
+print('Starting')
+thread.start()
+thread.join(max_time)
+thread.stop()
+print('Stopped')
