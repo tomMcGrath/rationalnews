@@ -1,3 +1,2 @@
-Type,TimeSuccess,2019-02-16 19:58:32.312693
-[{'code': 187, 'message': 'Status is a duplicate.'}],2019-02-16 19:58:43.211931
-[{'code': 187, 'message': 'Status is a duplicate.'}],2019-02-16 19:58:54.084079
+Type,Time
+No news,2019-02-17 16:03:56.501833
