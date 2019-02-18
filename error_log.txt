@@ -1,2 +1,2 @@
 Type,Time
-No news,2019-02-17 16:37:08.306978
+[{'code': 187, 'message': 'Status is a duplicate.'}],2019-02-18 19:58:32.957231
