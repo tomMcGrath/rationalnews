@@ -2,7 +2,7 @@ import threading, time, datetime
 import get_articles, score_articles
 import pickle
 import numpy as np
-
+from pdb import set_trace
 # Class for repetitive actions
 class RepeatEvery(threading.Thread):
     """
@@ -46,10 +46,10 @@ def tweet_news(tweepyapi,qaly_path,error_log_filename, error_log_pointer, load_a
         pickled_file = open('dict_url_desc_out.pkl', 'rb')
         article_dict = pickle.load(pickled_file)
     else:
-        page_limit_per_request = 1
-        results_per_page = 20
-        article_dict = get_articles.get_results(page_limit_per_request,
-                                                results_per_page)
+        # page_limit_per_request = 1
+        # results_per_page = 20
+        # article_dict = get_articles.get_results()
+        article_dict = get_articles.get_results()
     if len(article_dict) < 5: # assume something went wrong and load
         error_log_pointer = open(error_log_filename,'a')
         error_log_pointer.write('get_articles() error,'+str(datetime.datetime.now())+'\n')
