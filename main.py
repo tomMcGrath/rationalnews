@@ -1,5 +1,6 @@
 import tweepy
 import tweeting
+from IPython import get_ipython
 
 '''
 To run this script:
@@ -9,6 +10,12 @@ $ python main.py
 
 Then detach the session by typing ctrl+b d
 '''
+
+# Make changes to functions on the fly
+ipython = get_ipython()
+ipython.magic("reload_ext autoreload")
+ipython.magic("autoreload 2")
+
 
 credentials_dir = '../'
 credentials_filename = 'twitter_API_keys.txt' # this must be placed in the directory above the repo
