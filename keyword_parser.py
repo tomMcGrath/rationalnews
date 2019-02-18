@@ -26,12 +26,13 @@ def parse_keywords(x):
     def unroll(y):
         if isinstance(y, str): return [y.strip('"')]
         else:
-            if 'AND' in y:
-                y = list(filter(lambda a: a!='AND', y))
-                return list(product(*[unroll(a) for a in y]))
-            elif 'OR' in y:
+            if 'AND' in y and 'OR' in y: raise RuntimeError('check bracketting--cannot have both AND and OR in same clause: %s' %str(y))
+            if 'OR' in y:
                 y = list(filter(lambda a: a!='OR', y))
                 return list(chain.from_iterable([unroll(a) for a in y]))
+            else:
+                y = list(filter(lambda a: a!='AND', y))
+                return list(product(*[unroll(a) for a in y]))
     def flatten(y):
         if isinstance(y, str): return [y]
         else:
