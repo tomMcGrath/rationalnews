@@ -10,6 +10,7 @@ If there are running sessions, you will see the output. Otherwise, to run the sc
 ```
 tmux
 cd rationalnews
-python main.py
+ipython
+run main.py
 ```
 then `ctrl+b d` to detach the tmux session, and `ctrl+d` to log out of the EC2 instance
