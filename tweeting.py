@@ -52,12 +52,13 @@ def tweet_news(tweepyapi,qaly_path,error_log_filename, error_log_pointer, load_a
             article_dict = get_articles.get_results(page_limit_per_request = 1)
         else:
             article_dict = get_articles.get_results()
-    if len(article_dict) < 5: # assume something went wrong and load
+    if len(article_dict) < 5: # assume something went wrong with the API
         output=tweepyapi.update_status("Something went wrong with the API at " + str(datetime.datetime.now()))
         error_log_pointer = open(error_log_filename,'a')
         error_log_pointer.write('get_articles() error,'+str(datetime.datetime.now())+',NaN'+'\n')
         error_log_pointer.close()
         print('Error in get_articles()\n')
+        return
     else:
         ## Calculate aggregate QALY scores for each article
         qaly_scorer = score_articles.get_qaly_data(qaly_path)
@@ -91,7 +92,11 @@ def tweet_news(tweepyapi,qaly_path,error_log_filename, error_log_pointer, load_a
             error_log_pointer.write('Success,'+str(datetime.datetime.now())+','+topics_string+'\n')
             error_log_pointer.close()
         except Exception as e:
+            set_trace()
+            output=tweepyapi.update_status(e.reason+' Time: '+ str(datetime.datetime.now()))
             error_log_pointer = open(error_log_filename,'a')
             error_log_pointer.write(e.reason+','+str(datetime.datetime.now())+',NaN'+'\n')
             error_log_pointer.close()
+            print(e.reason)
+            return
     print('Done!')
