@@ -53,6 +53,7 @@ def tweet_news(tweepyapi,qaly_path,error_log_filename, error_log_pointer, load_a
         else:
             article_dict = get_articles.get_results()
     if len(article_dict) < 5: # assume something went wrong and load
+        output=tweepyapi.update_status("Something went wrong with the API at " + str(datetime.datetime.now()))
         error_log_pointer = open(error_log_filename,'a')
         error_log_pointer.write('get_articles() error,'+str(datetime.datetime.now())+',NaN'+'\n')
         error_log_pointer.close()
