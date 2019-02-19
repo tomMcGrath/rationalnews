@@ -92,7 +92,6 @@ def tweet_news(tweepyapi,qaly_path,error_log_filename, error_log_pointer, load_a
             error_log_pointer.write('Success,'+str(datetime.datetime.now())+','+topics_string+'\n')
             error_log_pointer.close()
         except Exception as e:
-            set_trace()
             output=tweepyapi.update_status(e.reason+' Time: '+ str(datetime.datetime.now()))
             error_log_pointer = open(error_log_filename,'a')
             error_log_pointer.write(e.reason+','+str(datetime.datetime.now())+',NaN'+'\n')
