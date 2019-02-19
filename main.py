@@ -43,7 +43,7 @@ qaly_path = 'global_prios/global_prios.csv'
 # Set up error log
 error_log_filename = 'error_log.txt'
 error_log_pointer = open(error_log_filename,'w')
-error_log_pointer.write('Type,Time\n')
+error_log_pointer.write('Type,Time,Topic\n')
 error_log_pointer.close()
 
 periodicity_s = 3600
