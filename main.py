@@ -1,6 +1,7 @@
 import tweepy
 import tweeting
 from IPython import get_ipython
+import sqlite3 as sq
 
 '''
 To run this script:
@@ -46,10 +47,20 @@ error_log_pointer = open(error_log_filename,'w')
 error_log_pointer.write('Type,Time,Topic\n')
 error_log_pointer.close()
 
+# Create API database
+db_filename = 'news.db'
+create_str = '''CREATE TABLE IF NOT EXISTS news (
+                 url TEXT PRIMARY KEY,
+                 contents TEXT NOT NULL,
+                 date_scraped DATETIME
+                 )
+            '''
+tweeting.create_db(db_filename, create_str)
+
 periodicity_s = 3600
 max_time = 7*24*3600
 
-thread = tweeting.RepeatEvery(periodicity_s, tweeting.tweet_news, tweepyapi, qaly_path, error_log_filename, error_log_pointer)
+thread = tweeting.RepeatEvery(periodicity_s, tweeting.tweet_news, tweepyapi, qaly_path, error_log_filename, error_log_pointer, dbg_mode=True)
 
 print('Starting')
 thread.start()
