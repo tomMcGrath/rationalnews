@@ -3,6 +3,31 @@ import get_articles, score_articles
 import pickle
 import numpy as np
 from pdb import set_trace
+import sqlite3 as sq
+import os
+
+def create_db(db_filename, create_str):
+    """ Create a SQLite database
+
+    Parameters
+    ----------------
+    db_filename : A string, the name of the database to create
+    """
+    if not os.path.exists(db_filename):
+        conn = sq.connect(db_filename)
+        c = conn.cursor()
+        c.execute(create_str)
+        conn.commit()
+        conn.close()
+
+def save_news(db_filename, article_dict):
+    ''' Insert article_dict into news
+
+    P
+
+    '''
+    a=1
+
 # Class for repetitive actions
 class RepeatEvery(threading.Thread):
     """
@@ -52,6 +77,7 @@ def tweet_news(tweepyapi,qaly_path,error_log_filename, error_log_pointer, load_a
             article_dict = get_articles.get_results(page_limit_per_request = 1)
         else:
             article_dict = get_articles.get_results()
+        save_news()
     if len(article_dict) < 5: # assume something went wrong with the API
         output=tweepyapi.update_status("Something went wrong with the API at " + str(datetime.datetime.now()))
         error_log_pointer = open(error_log_filename,'a')
